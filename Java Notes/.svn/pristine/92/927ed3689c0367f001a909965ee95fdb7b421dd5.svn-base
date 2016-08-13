@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vx>
+	<keysDetails>
+		<expiryTimeTransientData>30</expiryTimeTransientData>
+		<restrictedKeys>login,session,userid,protected</restrictedKeys>
+		<transientKeys>private,transient</transientKeys>
+	</keysDetails>
+	<cutoff>
+		<checkin>
+			<web>
+				<domestic>45</domestic>
+				<international>60</international>
+			</web>
+		</checkin>
+		<changeCancel>
+		  <nonIrop>90</nonIrop>
+		  <irop>1</irop>
+		  </changeCancel>
+		    <changeSeat>45</changeSeat>
+		<booking>
+			<search>90</search>
+		</booking>
+		<flightStatusDelay>
+			<flightStatusDelayCutoff>14</flightStatusDelayCutoff>
+		</flightStatusDelay>
+	</cutoff>
+	
+	<seatMapAcsWindowHours>24</seatMapAcsWindowHours>
+	
+	<monkeyWrench>false</monkeyWrench>
+	
+	<previousEntryActiveWaitForResponse>
+		<retryCount>2</retryCount>
+	</previousEntryActiveWaitForResponse>
+	
+	<ffProgram>
+		<partner>
+			<name>Virgin America (Elevate)</name>
+			<code>VX</code>
+			<idLength>11</idLength>
+		</partner>
+		<partner>
+			<name>Virgin Atlantic (Flying Club)</name>
+			<code>VS</code>
+			<idLength>11</idLength>
+		</partner>
+		<partner>
+			<name>Virgin Australia (Velocity)</name>
+			<code>VA</code>
+			<idLength>11</idLength>
+		</partner>
+		<partner>
+			<name>Singapore (KrisFlyer)</name>
+			<code>SQ</code>
+			<idLength>10</idLength>
+		</partner>
+		<partner>
+			<name>Emirates (Skywards)</name>
+			<code>EK</code>
+			<idLength>9</idLength>
+		</partner>
+	</ffProgram>
+	<ticketingTimeLimit>
+		<futureTTlTime>120</futureTTlTime>
+		<sameDayTTlTime>30</sameDayTTlTime>
+	</ticketingTimeLimit>
+	<coMarketedCities>
+		<regionalAirport>
+			<name>New York</name>
+			<value>NYC</value>
+			<airports>
+				<code>EWR</code>
+				<code>JFK</code>
+				<code>LGA</code>
+			</airports>
+		</regionalAirport>
+		<regionalAirport>
+			<name>Washington DC</name>
+			<value>WAS</value>
+			<airports>
+				<code>IAD</code>
+				<code>DCA</code>
+			</airports>
+		</regionalAirport>
+		<regionalAirport>
+            <name>Dallas - All Airport</name>
+            <value>QDF</value>
+            <airports>
+                <code>DAL</code>
+                <code>DFW</code>
+            </airports>
+        </regionalAirport>
+	</coMarketedCities>
+
+	<adsItaDetails>
+		<rtpsEnabled>true</rtpsEnabled>
+		<cardDetails>
+			<card>
+				<name>BASE_CARD</name>
+				<id>VXBC</id>
+				<discountAmount>50</discountAmount>
+				<creditTermNumber>
+					<creditTermNumber>0</creditTermNumber> <!-- 0 is used for test case -->
+				    <creditTermNumber>21</creditTermNumber>
+					<creditTermNumber>22</creditTermNumber>
+					<creditTermNumber>23</creditTermNumber>
+					<creditTermNumber>80</creditTermNumber>
+					<creditTermNumber>82</creditTermNumber>
+					<creditTermNumber>83</creditTermNumber>
+				</creditTermNumber>
+			</card>
+			<card>
+				<name>PREMIUM_CARD</name>
+				<id>VXPC</id>
+				<discountAmount>50</discountAmount>
+				<creditTermNumber>
+					<creditTermNumber>31</creditTermNumber>
+					<creditTermNumber>32</creditTermNumber>
+					<creditTermNumber>33</creditTermNumber>
+					<creditTermNumber>85</creditTermNumber>
+					<creditTermNumber>86</creditTermNumber>
+					<creditTermNumber>87</creditTermNumber>
+				</creditTermNumber>
+			</card>
+		</cardDetails>
+
+		<checkNumbers>
+		  <ccNumber>4676411</ccNumber>
+		  <ccNumber>4676410</ccNumber>
+		</checkNumbers>
+		
+		<bureauInfo>
+			<bureau>
+				<code>CBI</code>
+				<name>Equifax</name>
+				<addressInfo>
+					<city>Atlanta</city>
+					<postBox>PO Box 740241</postBox>
+					<state>GA</state>
+					<zipCode>30374</zipCode>
+					<phoneNumber>8006851111</phoneNumber>
+				</addressInfo>
+			</bureau>
+			<bureau>
+				<code>TRW</code>
+				<name>Experian</name>
+				<addressInfo>
+					<city>Allen</city>
+					<postBox>PO Box 2002</postBox>
+					<state>TX</state>
+					<zipCode>75013</zipCode>
+					<phoneNumber>8883973742</phoneNumber>
+				</addressInfo>
+			</bureau>
+		</bureauInfo>
+
+	</adsItaDetails>
+	
+	<expressJoin>
+		<avatarCode>V090</avatarCode>
+	</expressJoin>
+	
+	<unsupportedAirports>
+		<code>HDQ</code>
+		<code>FSG</code>
+		<code>PTA</code>
+	</unsupportedAirports>
+	
+	<sessionDestroyScheduler>
+		<poolSize>100</poolSize>
+		<delayInSeconds>2</delayInSeconds>
+	</sessionDestroyScheduler>
+	
+	<poolStats>
+		<allowedIPs>172,127</allowedIPs>
+		<sha>vx123</sha>
+	</poolStats>
+	
+	<queryAncillariesDetails>
+		<bundleEnabled>false</bundleEnabled>
+		<maxQuantityPerPax>99</maxQuantityPerPax>
+		<vxSupportedAncillaries>
+			<vxAncillary>
+				<subCode>0BT</subCode>
+				<commercialName>PET IN CABIN</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>0GO</subCode>
+				<commercialName>UPTO50LB 23KG BAGGAGE</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>0G6</subCode>
+				<commercialName>PRIORITY BOARDING</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>MCM</subCode>
+				<commercialName>UPGD MAIN CABIN TO MCS</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>MCF</subCode>
+				<commercialName>UPGD MAIN CABIN TO FIRST</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>MSF</subCode>
+				<commercialName>UPGD MCS TO FIRST</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>LIA</subCode>
+				<commercialName>LOUNGE PASS FOR IAD</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>LLA</subCode>
+				<commercialName>LOFT AT LAX</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>LJF</subCode>
+				<commercialName>LOUNGE PASS FOR JFK</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>CHS</subCode>
+				<commercialName>CHG FEE WAIVER</commercialName>
+			</vxAncillary>
+			<vxAncillary>
+				<subCode>ELV</subCode>
+				<commercialName>POINTS REDEPOSIT FEE</commercialName>
+			</vxAncillary>			
+		</vxSupportedAncillaries>
+	</queryAncillariesDetails>
+</vx>
