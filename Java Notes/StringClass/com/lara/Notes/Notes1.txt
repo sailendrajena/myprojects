@@ -1,0 +1,1182 @@
+	To represents multiple character in an array we use String, StringBuffer or StringBuilder Class.
+*	Its a very difficult to manage with character in a program. So String class came in Java for avoiding difficulties in Character by Grouping all Characters into a String Class.
+*	String Class is final Class. Inside String class three methods of Object Class got overrides i.e toString(), equals() and hashCode().
+*	String Class Objects are Immutable means we can't change its value once got created. This String Class object can be created without help of "new" operator.
+	For Example: String name = "Sailendra Narayan Jena";
+*	String Class already implemented Serializable and Cloneable Interfaces of Object Class.
+*	In Java there is two types of memory is allocating. One is Constant Pool and Non Constant Pool. In Constant Pool String class Unique Object only allowed but in case of Non-Constant Pool 
+	allow all objects of String class.
+
+Example:
+
+package com.lara.StringNotes;
+
+public class Notes1
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc";
+		System.out.println(s1);
+		String s2 = "abc";
+		System.out.println(s2);
+		System.out.println(s1 == s2);
+		System.out.println(s1.equals(s2));
+		System.out.println(s1.hashCode() == s2.hashCode());
+	}
+}
+/*
+ * Here out put of this program is:
+ * abc
+	abc
+	true
+	true
+	true
+Here in this scenarios we already know that inside String class both equals() and hashCode() method got overrides. So when we are matching two String class object values then it will check 
+both equality and hash generated code.
+ */
+ 
+ 
+ Whenever 1st object is created then that object will be stored in the constant pool and when an object created using "new " operator then that object is creating into Non-Constant Pool. 
+
+Hint: Objects of a class will never pass in any method or function, only reference of that object is passing or values. 
+
+Example:
+
+package com.lara.StringNotes;
+
+public class Notes3
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc";
+		System.out.println(s1);
+		
+		String s2 = new String("abc");
+		System.out.println(s2);
+		
+		System.out.println(s1 == s2);
+		System.out.println(s1.equals(s2));
+		System.out.println(s1.hashCode() == s2.hashCode());
+	}
+}
+/*
+ * Here both Objects are different. One is pointing to Constant Pool and another is pointing to Non-Constant Pool. But both containers are same. Means both are containing same values. So 
+ * output becomes like this.
+ * abc
+	abc
+	false
+	true
+	true
+	
+	Here both equals and hashCode methods are looking into contains of the object. Here both methods are got override in this class for this reason its showing true in both cases.
+ */
+ 
+ 
+Example:
+ 
+package com.lara.StringNotes;
+
+public class Notes3
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc";
+		System.out.println(s1);
+		
+		String s2 = new String("abc");
+		System.out.println(s2);
+		
+		System.out.println(s1 == s2);
+		System.out.println(s1.equals(s2));
+		System.out.println(s1.hashCode() == s2.hashCode());
+	}
+}
+/*
+ * Here both Objects are different. One is pointing to Constant Pool and another is pointing to Non-Constant Pool. But both containers are same. Means both are containing same values. So 
+ * output becomes like this.
+ * abc
+	abc
+	false
+	true
+	true
+	
+	Here both equals and hashCode methods are looking into contains of the object. Here both methods are got override in this class for this reason its showing true in both cases.
+ */
+ 
+ 
+Example:
+ 
+ package com.lara.StringNotes;
+
+public class Notes4
+{
+	public static void main(String[] args)
+	{
+		String s1  = "abc";
+		System.out.println(s1);
+		
+		s1 = s1+"xyz";
+		
+		System.out.println(s1);
+	}
+}
+/*
+ * Here s1 is pointing to Constant Pool where object got created. While printing this s1	object then it will print the value inside this object. In third line means we are concatenate two String 
+ * values. Here we concatenate two strings one is value of s1 and another String "xyz" and then we are storing this new values to into same s1 pointing object. So while printing this s1 reference
+ * then we will get this below value.
+ * abc
+	abcxyz
+	
+	Here abc is the previous value stored inside s1 object reference but abcxyz is the new values after concatenate.
+ */
+ 
+
+*	Object can't be pass into + operator, either values or object reference can only pass while doing "+" operation.
+*	When we are doing "+" operation between two String then among both String one String should be permanent and another String can be permanent or temporary. If both String permanent 
+	in that case also this operation possible. While we are doing concatenation then in that case JVM is looking first whether among these two String one is permanent or not. If condition satisfied 
+	then in that case JVM will create new object after concatenation operation successful and put the new value inside this object and JVM will release that old object as abandoned.
+	
+
+Example:
+
+package com.lara.StringNotes;
+
+public class Notes5
+{
+	public static void main(String[] args)
+	{
+		String s1 = "Ja";
+		String s2 = "va";
+		String s3 = s1+s2;
+		String s4 = "Java";
+		
+		System.out.println("s1 == s2: "+(s1 == s2));
+		System.out.println("s1.equals(s2): "+s1.equals(s2));
+		System.out.println("s1.hashCode() == s2.hashCode(): "+(s1.hashCode() == s2.hashCode()));
+		
+		System.out.println("s1 == s3: "+(s1 == s3));
+		System.out.println("s1.equals(s3): "+s1.equals(s3));
+		System.out.println("s1.hashCode() == s3.hashCode(): "+(s1.hashCode() == s3.hashCode()));
+		
+		System.out.println("s1 == s4: "+(s1 == s4));
+		System.out.println("s1.equals(s4): "+s1.equals(s4));
+		System.out.println("s1.hashCode() == s4.hashCode(): "+(s1.hashCode() == s4.hashCode()));
+		
+		System.out.println("s2 == s3: "+(s1 == s3));
+		System.out.println("s2.equals(s3): "+s2.equals(s3));
+		System.out.println("s2.hashCode() == s3.hashCode(): "+(s2.hashCode() == s3.hashCode()));
+		
+		System.out.println("s2 == s4: "+(s2 == s4));
+		System.out.println("s2.equals(s4): "+s2.equals(s4));
+		System.out.println("s2.hashCode() == s4.hashCode(): "+(s2.hashCode() == s4.hashCode()));
+		
+		System.out.println("s3 == s4: "+(s3 == s4));
+		System.out.println("s3.equals(s4): "+s3.equals(s4));
+		System.out.println("s3.hashCode() == s4.hashCode(): "+(s3.hashCode() == s4.hashCode()));
+	}
+}
+/*
+ * Here in this program we have four created four String class objects. Among these objects three objects created inside Constant Pool and one object is created inside Non-Constant Pool.
+ *  s1, s2 and s4 created objects inside Constant Pool and s3 object is created inside No-Constant Pool. Here why s3 object is created inside non constant pool? reason is it check that both object 
+ *  references are permanent or temporary object reference. Here s3 object reference is creating a new object combining two object references i.e s1 and s2. So while it checked that both object 
+ *  references are permanent then its checked for contains inside both this objects are already available inside both memory or not. Its found that contains of both objects references (s1 & s2) 
+ *  are available inside Constant Pool. So JVM concatenate these two objects reference and create another new object inside Non-Constant Pool. So here is the below output of this programs.
+ *		s1 == s2: false
+		s1.equals(s2): false
+		s1.hashCode() == s2.hashCode(): false
+		s1 == s3: false
+		s1.equals(s3): false
+		s1.hashCode() == s3.hashCode(): false
+		s1 == s4: false
+		s1.equals(s4): false
+		s1.hashCode() == s4.hashCode(): false
+		s2 == s3: false
+		s2.equals(s3): false
+		s2.hashCode() == s3.hashCode(): false
+		s2 == s4: false
+		s2.equals(s4): false
+		s2.hashCode() == s4.hashCode(): false
+		s3 == s4: false
+		s3.equals(s4): true
+		s3.hashCode() == s4.hashCode(): true
+		
+		Explanations of Output:
+		
+		s1 == s2: false
+		Here in this above line we got to know that these two references are pointing to two different location. So while we are checking equality of memory location then its showing false.
+		
+		s1.equals(s2): false
+		Here in this above line we got to know that these two references contains different values. While we are checking equality for contains then its showing false.
+		
+		s1.hashCode() == s2.hashCode(): false
+		Here in this above line we are getting false due to before two cases its failing due to different location as well as different contains. So for this reason while generating hash values then it
+		should be different.
+		
+		s1 == s3: false
+		Here in this case both object references memory locations are different, one is pointing to Constant Pool and another is Non-Constant Pool. So for this reason result is false.
+		
+		s1.equals(s3): false
+		Here in this case both object references contain are different. One is containing value as "Ja" and another is containing "Java". So for this reason we are getting false.
+		
+		s1.hashCode() == s3.hashCode(): false
+		Here in this case both object references hashCode is different due to reason that if both object memory location as well as contains are different then in that case hasCode generate value 
+		should be different.
+		
+		s1 == s4: false
+		Here in this case both object references memory location are different. Because here both object references are pointing to same constant pool but memory location are different. So for 
+		this reason we are getting false.
+		
+		s1.equals(s4): false
+		Here in this case both object references contains are different due to the reason that both object references are pointing into same Constant Pool but their contains are different. So for this 
+		reason its result is false.
+		
+		s1.hashCode() == s4.hashCode(): false
+		Here in this case both object references hash generated values are different because if both memory location and contains inside both objects are different for this reason the hash generate
+		values are also different. So for this reason result is false.
+		
+		s2 == s3: false
+		Here also same thing happening whatever i have already mentioned in previous lines.
+		
+		s2.equals(s3): false
+		Here also same thing happening whatever i have already mentioned in previous lines.
+		
+		s2.hashCode() == s3.hashCode(): false
+		Here also same thing happening whatever i have already mentioned in previous lines.
+		
+		s2 == s4: false
+		Here also same thing happening whatever i have already mentioned in previous lines.
+		
+		s2.equals(s4): false
+		Here also same thing happening whatever i have already mentioned in previous lines.
+		
+		s2.hashCode() == s4.hashCode(): false
+		Here also same thing happening whatever i have already mentioned in previous lines.
+		
+		s3 == s4: false
+		Here also same thing happening whatever i have already mentioned in previous lines.
+		
+		s3.equals(s4): true
+		Here in this cases both object references contains are same. So for this  result is getting true.
+		
+		s3.hashCode() == s4.hashCode(): true
+		Here in this case both object references hash generated values are same due to that equality for contains are same. So for this reason result is coming true.
+ */
+
+
+Example:
+
+ 
+ package com.lara.StringNotes;
+
+public class Notes6
+{
+	public static void main(String[] args)
+	{
+		String s1 = "Java";
+		String s2 = "Ja"+"va";
+		
+		System.out.println(s1 == s2);
+		System.out.println(s1.equals(s2));
+		System.out.println(s1.hashCode() == s2.hashCode());
+	}
+}
+/*
+ * Here in this program two String objects are seems to be different. But actually its not different. Here String s2 while creating object before that it will concatenate two temporary references
+ * i.e "Ja" and "va". After concatenate its found that value already in constant pool. So JVM will not allow to create another object and it will point s2 to s1 location. For this reason here 
+ * equality for these cases are also equals. Even hash generated values also same for these two objects. So here both objects memory location of both objects are same. Here is the below 
+ * output of this  program.
+ * true
+	true
+	true
+ */
+ 
+ Example:
+
+ package com.lara.StringNotes;
+
+public class Notes7
+{
+	public static void main(String[] args)
+	{
+		String s1 = "Ja";
+		String s2 = s1+"va";
+		String s3 = "Java";
+		
+		System.out.println("s1 == s2: "+(s1 == s2));
+		System.out.println("s1.equals(s2): "+s1.equals(s2));
+		System.out.println("s1.hashCode() == s2.hashCode(): "+(s1.hashCode() == s2.hashCode()));
+		
+		System.out.println("s1 == s3: "+(s1 == s3));
+		System.out.println("s1.equals(s3): "+s1.equals(s3));
+		System.out.println("s1.hashCode() == s3.hashCode(): "+(s1.hashCode() == s3.hashCode()));
+		
+		System.out.println("s2 == s3: "+(s2 == s3));
+		System.out.println("s2.equals(s3): "+s2.equals(s3));
+		System.out.println("s2.hashCode() == s3.hashCode(): "+(s2.hashCode() == s3.hashCode()));
+	}
+}
+/*
+ * Here in this programs s1  and s2 objects are different. Because both contains are different. While creating s2 object JVM first check what is the content of s1 object and collect that content 
+ * and then concatenate those content value of s1 to "va" then look inside memory that is there any object available whose content are similar to this value. So while checking there is no object
+ * is there whose value is similar to this value. So it will create another object inside non-constant pool, not inside constant pool. Similarly s2 object value also similar to s3 but memory 
+ * location for this both objects are different. So these objects we can't tell them as equals. So all answer will come false except s2 and s3 equality is same and also hash generated values will
+ * come same. So these two answer will come true except rest answer.
+ * 
+ * 	s1 == s2: false
+		s1.equals(s2): false
+		s1.hashCode() == s2.hashCode(): false
+		s1 == s3: false
+		s1.equals(s3): false
+		s1.hashCode() == s3.hashCode(): false
+		s2 == s3: false
+		s2.equals(s3): true
+		s2.hashCode() == s3.hashCode(): true
+ * 
+ */
+ 
+ Example:
+
+package com.lara.StringNotes;
+
+public class Notes8
+{
+	public static void main(String[] args)
+	{
+		String s1 = "Java";
+		String s2 = new String("Java");
+		String s3 = "Ja"+"va";
+		
+		System.out.println("s1 == s2: "+(s1 == s2));
+		System.out.println("s1.equals(s2): "+(s1.equals(s2)));
+		System.out.println("s1.hashCode() == s2.hashCode(): "+(s1.hashCode() == s2.hashCode()));
+		
+		System.out.println("s1 == s3: "+(s1 == s3));
+		System.out.println("s1.equals(s3): "+(s1.equals(s3)));
+		System.out.println("s1.hashCode() == s3.hashCode(): "+(s1.hashCode() == s3.hashCode()));
+
+		System.out.println("s2 == s3: "+(s2 == s3));
+		System.out.println("s2.equals(s3): "+(s2.equals(s3)));
+		System.out.println("s2.hashCode() == s3.hashCode(): "+(s2.hashCode() == s3.hashCode()));
+	}
+}
+/*
+ * Here in this program both s1 and s3 are pointing to same location as already i have mentioned in previous program. s3 Object is different in memory location with these two objects s1 and
+ *  s3 and also hash generated value also same among these three object references. Here in this programs all objects contents are same but memory location is different in case of s2 object.
+ *  Here is the below output o this program.
+ * 	s1 == s2: false
+		s1.equals(s2): true
+		s1.hashCode() == s2.hashCode(): true
+		s1 == s3: true
+		s1.equals(s3): true
+		s1.hashCode() == s3.hashCode(): true
+		s2 == s3: false
+		s2.equals(s3): true
+		s2.hashCode() == s3.hashCode(): true
+ */
+ 
+ 
+ concat() Method:
+ 
+ Here using this method we are joining two String value and make it as one single String value and we can stored that value in same object or in different object of String types. If we want to store
+ that value in different datatypes then we have to go for parsing or casting then we can assigned that values to some other datatypes.
+ 
+ Mainly this method has some terms and condition.
+ 1. Two values should be permanent value of String class not temporary values.
+ 2. Either one value can be permanent or both or none of them but should be stored inside a permanent object location.
+ 
+ This method is predefined method of String class. If we want to join two String values then it will join using this method. While using this method when we are calling this method using String 
+ object then we have to pass another object reference or temporary values inside this method parameter. Then when JVM call this method then it will call String class method by passing this 
+ values. 
+ 
+ concat() method create a new object which is sending to caller of the method. Here caller of the method means the method where it get called.
+
+
+Example:
+
+package com.lara.StringNotes;
+
+public class Notes9
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc";
+		System.out.println("Value of s1 before concat: "+s1);
+		s1 = s1.concat("123");
+		System.out.println("Value of s1 after concat: "+s1);
+	}
+}
+/*
+ * Here in this program s1 value is abc and after concat the value becomes abc123. Because when we are using concate() method in that case during this operation we are adding parameter as 
+ * 123 and when we run this program then its calling caller method of String class and there its joining value of s1 with this new value. So value becomes abc123.
+ * Here below is the answer of this program.
+ * Value of s1 before concat: abc
+	Value of s1 after concat: abc123
+ */
+ 
+ 
+ Example:
+ 
+ 
+ package com.lara.StringNotes;
+
+public class Notes10
+{
+	public static void main(String[] args)
+	{
+		String s1 = "Ja";
+		String s2 = "va";
+		String s3 = s1.concat(s2);
+		String s4 = "Ja".concat(s2);
+		String s5 = s1.concat("va");
+		
+		System.out.println("s1 == s2: "+(s1 == s2));
+		System.out.println("s1 == s3: "+(s1 == s3));
+		System.out.println("s1 == s4: "+(s1 == s4));
+		System.out.println("s1 == s5: "+(s1 == s5));
+		System.out.println("s2 == s3: "+(s1 == s3));
+		System.out.println("s2 == s4: "+(s1 == s4));
+		System.out.println("s2 == s5: "+(s1 == s5));
+		System.out.println("s3 == s4: "+(s1 == s4));
+		System.out.println("s3 == s5: "+(s1 == s5));
+		System.out.println("s4 == s5: "+(s1 == s5));
+		
+		System.out.println("s1.equals(s2): "+(s1.equals(s2)));
+		System.out.println("s1.equals(s3): "+(s1.equals(s3)));
+		System.out.println("s1.equals(s4): "+(s1.equals(s4)));
+		System.out.println("s1.equals(s5): "+(s1.equals(s5)));
+		System.out.println("s2.equals(s3): "+(s2.equals(s3)));
+		System.out.println("s2.equals(s4): "+(s2.equals(s4)));
+		System.out.println("s2.equals(s5): "+(s2.equals(s5)));
+		System.out.println("s3.equals(s4): "+(s3.equals(s4)));
+		System.out.println("s3.equals(s5): "+(s3.equals(s5)));
+		System.out.println("s4.equals(s5): "+(s4.equals(s5)));
+		
+		System.out.println("s1.hashCode() == s2.hashCode(): "+(s1.hashCode() == s2.hashCode()));
+		System.out.println("s1.hashCode() == s3.hashCode(): "+(s1.hashCode() == s3.hashCode()));
+		System.out.println("s1.hashCode() == s4.hashCode(): "+(s1.hashCode() == s4.hashCode()));
+		System.out.println("s1.hashCode() == s5.hashCode(): "+(s1.hashCode() == s5.hashCode()));
+		System.out.println("s2.hashCode() == s3.hashCode(): "+(s2.hashCode() == s3.hashCode()));
+		System.out.println("s2.hashCode() == s4.hashCode(): "+(s2.hashCode() == s4.hashCode()));
+		System.out.println("s2.hashCode() == s5.hashCode(): "+(s2.hashCode() == s5.hashCode()));
+		System.out.println("s3.hashCode() == s4.hashCode(): "+(s3.hashCode() == s4.hashCode()));
+		System.out.println("s3.hashCode() == s5.hashCode(): "+(s3.hashCode() == s5.hashCode()));
+		System.out.println("s4.hashCode() == s5.hashCode(): "+(s4.hashCode() == s5.hashCode()));
+		
+	}
+}
+/*
+ * Here in this program s1 and s2 are different objects and also memory location of these two objects are different from rest objects. Here s3, s4 and s5 objects content is same but memory 
+ * location of all objects is different. so here in this case only equal() method and hashCode() method will come true in case of s3, s4 and s5 and rest will come false. Here is the answer of this 
+ * question.
+ * 	s1 == s2: false
+		s1 == s3: false
+		s1 == s4: false
+		s1 == s5: false
+		s2 == s3: false
+		s2 == s4: false
+		s2 == s5: false
+		s3 == s4: false
+		s3 == s5: false
+		s4 == s5: false
+		s1.equals(s2): false
+		s1.equals(s3): false
+		s1.equals(s4): false
+		s1.equals(s5): false
+		s2.equals(s3): false
+		s2.equals(s4): false
+		s2.equals(s5): false
+		s3.equals(s4): true
+		s3.equals(s5): true
+		s4.equals(s5): true
+		s1.hashCode() == s2.hashCode(): false
+		s1.hashCode() == s3.hashCode(): false
+		s1.hashCode() == s4.hashCode(): false
+		s1.hashCode() == s5.hashCode(): false
+		s2.hashCode() == s3.hashCode(): false
+		s2.hashCode() == s4.hashCode(): false
+		s2.hashCode() == s5.hashCode(): false
+		s3.hashCode() == s4.hashCode(): true
+		s3.hashCode() == s5.hashCode(): true
+		s4.hashCode() == s5.hashCode(): true
+ */
+ 
+ Example:
+ 
+ package com.lara.StringNotes;
+
+public class Notes11
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc";
+		String s2 = "abc";
+		
+		System.out.println("s1 == s2: "+(s1 == s2));
+		System.out.println("s1.equals(s2): "+(s1.equals(s2)));
+		System.out.println("s1.hashCode() == s2.hashCode(): "+(s1.hashCode() == s2.hashCode()));
+	}
+}
+/*
+ * Here in this program both object references content is same and memory also same. Because while JVM will create s2 object reference in that case it will check that whether this content is
+ * available or not. So JVM got that this value already assigned to s1 object references. So JVM will not create another object with same content and it will point another object references to 
+ * same location. So here below is the output of this program.
+ * s1 == s2: true
+	s1.equals(s2): true
+	s1.hashCode() == s2.hashCode(): true
+ */
+ 
+ 
+ * Inside an Array while we want to check element then we have to go for length or if we want to count any element from an Array then we required length but in case of String we required 
+ 	length() method for counting an element inside String Array.
+ 
+ trim() Method:
+ 
+ This method is used as remove spaces before and after a String values not middle of any String. This method is available in String class. So we are using this method for remove spaces. Return
+ types of this method is String types which is return same string values but without spaces.
+ 
+ 
+ Example:
+ 
+ package com.lara.StringNotes;
+
+public class Notes13
+{
+	public static void main(String[] args)
+	{
+		String s1 = " abc_123 ";
+		System.out.println("s1 Length before using trim() method: "+s1.length());
+		System.out.println(s1.trim());
+		System.out.println("s1 Length after using trim() method: "+s1.trim().length());
+	}
+}
+/*
+ * Here in this program we are taking a String type objects whose value is contains space before and after of the String value. While we are using trim() method for removing space then it is 
+ * removing spaces from before and after of String value and return a that values without space.
+ *	s1 Length before using trim() method: 9
+	abc_123
+	s1 Length after using trim() method: 7
+ */
+ 
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+public class Notes14
+{
+	public static void main(String[] args)
+	{
+		String s1 = " Sailendra Narayan Jena ";
+		String s2 = s1.replaceAll(" ", "");
+		
+		System.out.println(s2);
+	}
+}
+/*
+ * Here in this program we are removing all space of a String Object value. Here space are removing from before, after and middle of String. in case of trim() method we are just removing space
+ * from before and after a String object value. So here below is the output of this program.
+ * SailendraNarayanJena
+ */
+ 
+ 
+ length() Method:
+ 
+ Here this method is belongs to String class method. This method is basically used for counting the no of character available inside a String object's value. So we can also called it as its showing
+ length of a String values. But actually its counting the no of character and showing that count. and we are calling it as length. Its also count space, wild card and special character also if 
+ available inside String.
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+public class Notes15
+{
+	public static void main(String[] args)
+	{
+		String s1 = "Sailendra Narayan Jena";
+		
+		System.out.println(s1.length());
+	}
+}
+/*
+ * Here in this program we are showing that how length() method of String class is using. Here this length() method is counting all character in a String object's value even including spaces and 
+ * special character also. So in String class mostly using this length() method for counting no of character as well as length of that String value. Here is the below answer of this program.
+ * 22
+ */
+ 
+ charAt() Method:
+ 
+ This method is also belongs to String class. This method is used for getting actual position of a character inside a String value. This method is taking one parameter which is int types. This int 
+ type of parameter we passing due to get to know that in this position which character is available. Its return type is also character type.
+ 
+ 
+ Examples:
+ 
+package com.lara.StringNotes;
+
+public class Notes16
+{
+	public static void main(String[] args)
+	{
+		String name = "Sailendra Narayan Jena";
+		
+		char ch = name.charAt(2);
+		char ch1 = name.charAt(12);
+		
+		System.out.println(ch);
+		System.out.println(ch1);
+	}
+}
+/*
+ * In this program we are trying to get the value at position 2 using charAt() method. This method is belongs to String class and return character value. Here below is the output of this 
+ * program.
+ * i
+ * r
+ */
+ 
+ indexOf() Method:
+ 
+ This method is used for getting the position of a character in a String Values. This method is belongs to String class and return types of this method is int types. While we are checking some 
+ character position inside a String value then this method is using technique for checking character from left to right. There is no reverse direction of checking available on this method. So it 
+ will check only one way direction.
+ 
+ lastIndexOf() Method:
+ 
+ This method is belongs to String class method. This method is basically used for searching for a character inside a String from right side to left side. Return types of this method is int type.
+ 
+ package com.lara.StringNotes;
+
+public class Notes13
+{
+	public static void main(String[] args)
+	{
+		String val = "abcabc";
+		int c = val.lastIndexOf('c');
+		int a = val.lastIndexOf('a');
+		
+		System.out.println(c);
+		System.out.println(a);
+	}
+}
+/*
+ * Here in this program we have created a String object whose value is "abcabc". We are trying to look the position of a character of a searching start from right to left side then lastIndexOf() 
+ * method is appropriate for this. Here in this program we are looking for a character from right side to left side. Here below is the output of this above class.
+ * 5
+	3
+ */
+ 
+ Hint: If we want to search for a character after a specific position onwards then better to use this method. indexOf(char character, int postion). Here inside this method we have mentioned 
+ two parameter. One is character which we are going to search inside a String value and another is position which means we have specified to JVM that search for this character after this 
+ position.
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+public class Notes14
+{
+	public static void main(String[] args)
+	{
+		String val = "abcabcabc";
+		int c = val.indexOf('c', 3);
+		
+		System.out.println("Value of c: "+c);
+	}
+}
+/*
+ * Here in this program we have created a String object inside Constant Pool whose value is "abcabcabc". Here we are searching for a character c inside this String value with assigned position 
+ * 3rd onwards. Means it will look for the character after 3rd position onwards of this String value.
+ * 
+ *Value of c: 5
+ */
+ 
+ Hint:  Using indexOf() method we not getting only index position of character but also we can get the index position of String values also.
+ 
+subString() Method:
+
+This method is used for searching for a particular word inside a String value. It will return the portion of a word from the String. If some one looks for a piece of word inside a String then it will
+search for that word and then return that word. If that word is not available inside String value then it will return -1 as negative that there is no such value is there inside this String. 
+This method coming from String class. Return type of this method is String clas types.
+
+substring() method required two string 1st is inclusive and 2nd is exclusive. Here we are splitting String value into two parts. Main rule of  this method is getting string from main String.
+
+
+Examples:
+
+
+package com.lara.StringNotes;
+
+public class Notes19
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc abc";
+		String s2 = s1.substring(4, 7);
+		
+		System.out.println(s2);
+	}
+}
+/*
+ * Here in this program we have created one String object. Here we are going to take one portion fo this String using substring() method. So here user mentioned the portion of the String to be
+ * taken i.e 4 to 7. So based on user output is:  abc. Here below is the output by Compiler. 
+ * abc
+ */
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+public class Notes18
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc abc";
+		String s2 = s1.substring(0, 3);
+		
+		System.out.println(s2);
+		
+	}
+}
+/*
+ * Here in this program we have created a String object whose value is "abc abc". Here we are going to pick one word from this value using subString() method. Here in this program we are 
+ * picking the portion from 0 to 3 from this String value. So here output by user is: abc . Here output of this program is 
+ * 
+ * abc 
+ * 
+ */
+ 
+ 
+ Hint:
+ 
+ split() Method:
+ 
+ This method is used for dividing one String into two String. Return type of this method is String class types. This method is belongs to String class method. This method has two part one is 
+ taking String as single parameter and another method is taking both String and int as two parameter. Single parameter method is used to split complete String while two parameter based split 
+ method we have used split String value for certain limit. 
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+public class Notes20
+{
+	public static void main(String[] args)
+	{
+		String val = "abc1xyz1hello1test";
+		String[] all = val.split("1");
+		
+		String[] val1 = val.split("1", 3);
+		
+		String[] val2 = val.split("0", 3);
+		
+		System.out.println("Value of all: ");
+		System.out.println("**************************");
+		for (int i = 0; i < all.length; i++)
+		{
+			System.out.println(all[i]);
+		}
+		
+		System.out.println("Values of val1: ");
+		System.out.println("**************************");
+		for (int i = 0; i < val1.length; i++)
+		{
+			System.out.println(val1[i]);
+		}
+		System.out.println("Value of val2: ");
+		System.out.println("**************************");
+		for (int i = 0; i < val2.length; i++)
+		{
+			System.out.println(val2[i]);
+		}
+	}
+}
+/*
+ * Here in this example we have created a String whose value is "abc1xyz1hello1test", from this value we want to split this String and String into a String array. So while we are going for splitting
+ * operation then we want from which part to which part of the String will be split. So String class provide this split() method which is taking one parameter as String through which we can split
+ * String into part by part based on that parameter. Whatever parameter we will pass into that method JVM will look into that value is available inside String. If that value is there then JVM 
+ * will split that String based on that value or parameter. If that value is not there then it will not return any split value it will return that complete String.
+ * 
+ * Here this split() method is of two types one is only one single parameter which is taking one String and another method is contains two parameter as String and int type. Here int types 
+ * means we are specifying JVM that split upto two part and keep rest as it.
+ *  
+ * Here are two method we have used in this class. One is based on single parameter and another is double parameter. 
+ *
+ * Here is the output by JVM: 
+ *
+ *Value of all: 
+	**************************
+	abc
+	xyz
+	hello
+	test
+	Values of val1: 
+	**************************
+	abc
+	xyz
+	hello1test
+	Value of val2: 
+	**************************
+	abc1xyz1hello1test
+ */
+ 
+ Hint:
+ 
+ toUpperCase() Method:
+ 
+ This method is used for turn all character of the String into Upper Case Letter. So String class providing this method to change String values ot lower case to upper case. Return type of this 
+ method is String class type.
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+public class Notes21
+{
+	public static void main(String[] args)
+	{
+		String val = "sailendra narayan jena";
+		
+		String val1 = val.toUpperCase();
+		
+		System.out.println(val1);
+		
+		String val2 = val1.toLowerCase();
+		
+		System.out.println(val2);
+	}
+}
+/*
+ * Here in this program we have created a String. Using this String we have to change the cases of character into lower to upper and upper to lower case. Here val is in lower case. So we are
+ * using this String class toUpperCase() method changes into upper case and store into val1. Similar;y we are changing cases of val1 into lower cases using toLowerCase() method of String 
+ * class and stored into val2. So output of this program is:
+ * 
+ * SAILENDRA NARAYAN JENA
+	sailendra narayan jena
+ */
+ 
+ Hint:
+ 
+ toLowerCase() Method:
+ This method also doing same thing as toUpperCase() method. Here in toUpperCase() method convert String value to all Upper Case character but in this case means in toLowerCase() method 
+ convert String value to all in Lower Case Character.
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+public class Notes21
+{
+	public static void main(String[] args)
+	{
+		String val = "sailendra narayan jena";
+		
+		String val1 = val.toUpperCase();
+		
+		System.out.println(val1);
+		
+		String val2 = val1.toLowerCase();
+		
+		System.out.println(val2);
+	}
+}
+/*
+ * Here in this program we have created a String. Using this String we have to change the cases of character into lower to upper and upper to lower case. Here val is in lower case. So we are
+ * using this String class toUpperCase() method changes into upper case and store into val1. Similar;y we are changing cases of val1 into lower cases using toLowerCase() method of String 
+ * class and stored into val2. So output of this program is:
+ * 
+ * SAILENDRA NARAYAN JENA
+	sailendra narayan jena
+ */
+ 
+ 
+ Hint:
+ 
+ equals()  & equalIgnoreCase() Method:
+ 
+ This method is actually overrided from Object class. This method is checking the content inside the object. If we are checking the content of the two any String objects then it will return as 
+ boolean value i.e true or false that both objects contents are same or not. If both object content are same then it will return true otherwise it will return false.
+ 
+ This method actually overrided inside String class. So while we are checking inside objects refereces content then it will always return actual answer. We will not required to override equals()
+ method separately inside this String class. 
+ 
+ This method also having two parts one is equals() and another is equalsIgnoreCase().
+ 
+ In Case of equalsIgnoreCase() method its bother about the cases of content value during checking equality of object's content. It will igonre the cases if one is written in small letter and another
+  is in capital letter. it will check only content of the objects that both are having same value or not.
+  
+  Exxamples:
+  
+ package com.lara.StringNotes;
+
+public class Notes22
+{
+	public static void main(String[] args)
+	{
+		String s1 = "abc";
+		String s2 = "Abc";
+		
+		System.out.println("s1.equals(s2): "+s1.equals(s2));
+		System.out.println("s1.equalsIgnoreCase(s2): "+s1.equalsIgnoreCase(s2));
+	}
+}
+/*
+ * Here in this program we have created two String objects whose values is not same but we can tell similar. One object i.e s1 content "abc" and another one i.e s2 content "Abc". We are trying 
+ * to check that both contents are equal or not. Here we are checking two ways one is direct equals() method and another is equalsIgnoreCase() method. Here below is the output of this 
+ * program.
+ * 
+ * s1.equals(s2): false
+ * s1.equalsIgnoreCase(s2): true
+ * 
+ * Here first statement is coming as false because here in this case we are not ignore the cases. Here both are similar but not equal due to first character of two values are different. first 
+ * character of first value is written in small letter but in case of second letter is in Capital letter. So for this reason its output is coming as false.
+ * 
+ * But in case of second statement is true due to we have used equalIgnoreCase() method means this method will check same equality as same as equals() method but only one difference is
+ * that its not checking cases. So for this reason its output is coming true.
+ * 
+ */
+ 
+ Hint:
+ 
+ StringBuffer and String Builder Class:
+ 
+ As we know that String object is Immutable means once got created nobody can't change the content of the object. So to change the content of the String objects or to create a mutable object
+  then we have to use either StringBuffer or StringBuilder. In both cases objects are mutable. Means we can change or modify the objects content. In StringBuffer and StringBuilder objects 
+  creation are better to use rather than use String object or creation of String objects. In Case of String object once got created then it can't be modify or change its states, if don't required that 
+  String object and its reference will be remove then that object is called as abandoned object. But we can't do anything with that objects we can't resuse this object. But while creating object 
+  using StringBuffer or StringBuilder then that object we can modify, change its state.
+   
+  1. equals() and hashCode() method is not override inside these two classes. For checking equality we have to overide equals() and hashCode() method from object class.
+  2. Some of methods of StringBuffer class are available inside StringBuilder class. 
+  3. StringBuffer class is synchronized class where as StringBuilder class is not Synchronized one. Here class synchronized not means that synchronized key word use before class  name. Here 
+  		synchronized class means all method of this class is synchronized for this reason we are considering class as synchronized where all method of StringBuilder class is not synchronized so
+  		for this reason its not thread safe one. 
+  4. Here StringBuffer class is thread safe one where StringBuilder is not thread safe.
+  5. If we consider as performace wise then StringBuilder is more faster than StringBuffer. Reason is that inside StringBuffer whatever method is there all are Synchronized means one thread can
+	  access this method at one time not all method. But while in case of StringBuilder all method is non synchronized then that class method can access by multiple threads. So performace wise 
+	  StringBuilder is more Faster than StringBuffer.
+6. But if we consider security wise then in that case StringBuffer is more useful than StringBuilder due to synchronization of all method of StringBuffer class.. 
+  
+  Inside StringBuffer class toString() method got overrides.
+  
+  Examples:
+  
+  package com.lara.StringNotes;
+
+public class Notes23
+{
+	public static void main(String[] args)
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append("Sailendra");
+		sb.append("Narayan");
+		sb.append("Jena");
+		
+		System.out.println(sb);
+	}
+}
+/*
+ * Here we have created StringBuffer object. Using this object we are trying to modify its state. Checking whether this class object is mutable or immutable. Here is the below output of this 
+ * program. 
+ * SailendraNarayanJena
+ * 
+ * From this output we got to know that while we are adding some more values to it then its adding that value to existing value.
+ */
+ 
+ Examples:
+ 
+ 
+ package com.lara.StringNotes;
+
+public class Notes24
+{
+	public static void main(String[] args)
+	{
+		StringBuffer sb = new StringBuffer("abc");
+		StringBuffer sb1 = new StringBuffer("abc");
+		
+		System.out.println(sb.equals(sb1));
+		System.out.println(sb.hashCode() == sb1.hashCode());
+	}
+}
+/*
+ * Here in this program we have created two StringBuffer Object whose content is equal. But while we are checking for equality and hashCode by using equals() and hashCode() method then in 
+ * that case all answer will come false due to that equals() and hashCode() method is not override inside this class. So for this reason its checking only memory location. Its not checking 
+ * content inside object. For this reason its showing false while comparing between two objects. Here below is the output of this program.
+ * false
+ *	false
+ */
+ 
+ Hint:
+ 
+ Differences Between String Class and StringBuffer Class:
+ 
+ String:
+ 1.	This class produce only Immutable object which we can't change the states of that object.
+ 2.	This class methods is not synchronized or thread safed.
+ 3.	toString(), equals() and hashCode() method of object class got overrided inside this class. No need to override explicitely.
+ 4.	This class object can be create two possible ways. One is using of new operator and another way is without using new operator.
+ 5.	This class objects can be accessible by multiple thread at a time or simultaneously.
+ 
+ StringBuffer Class:
+ 1.	This class objects are mutable means we can change the value of this object as well as we can modify this objects also.
+ 2.	All method inside this classes are synchronized or thread safe. For this reason one thread can access at a time not more than one thread.
+ 3.	toString() method only override to this class not equals() and hashCode() method. If we want to compare objects of this class then we have to override these two methods explicitely from 
+ 		object class.
+ 4.	This class objects can only be created by  using new operator. 
+ 
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+class A
+{
+	private int i ;
+	
+	A(int i )
+	{
+		this.i = i;
+	}
+	
+	int get()
+	{
+		return i;
+	}
+}
+
+public class Notes26
+{
+	public static void main(String[] args)
+	{
+		A a1 = new A(10);
+		
+		System.out.println(a1);
+		System.out.println(a1.get());
+	}
+}
+/*
+ * Here in this program we have created a Class name A inside this class a constructor is there and then one method is there which is returning an integer value. Inside constructor we are 
+ * passing and int value as an argument. So while we are creating object of this class then JVM will not create a default constructor it will use this argumented constructor due to that user 
+ * already created one argumented Constructor. So JVM will use this constructor during object creation. While creating object it will ask for pass int value inside constructor. So user enter 
+ * value as 10 inside this. Inside argumented constructor user declared one line where its mentioned that to initialize class level variable which is declared as int type i.e i. So whatever value
+ * user will pass inside constructor during object creation that time it will just initialized the class level variable. If we want to print the value of class A object then we will get the value inside 
+ * this object. But it will not call get() method created by user inside class A. Here this get() method is created by user which is return one int value that is i value. Here this program will give 
+ * the output as class with package name with @ and some hexadecimal number. It will not shows the value inside this object. Here  below is the output of this program.
+ *  
+ *  com.lara.StringNotes.A@3d0bbf6d
+ *  
+ *  Here if we will call this user created method i.e get() method by object reference of class A then we can get the value of i. Because here using this method we are returning values of i. Here 
+ *  is the output of this Program by calling get() method.
+ *  
+ *  com.lara.StringNotes.A@3d0bbf6d
+ *  10
+ */
+ 
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+class A
+{
+	private int i ;
+	
+	A(int i )
+	{
+		this.i = i;
+	}
+	
+	int get()
+	{
+		return i;
+	}
+}
+
+public class Notes26
+{
+	public static void main(String[] args)
+	{
+		A a1 = new A(10);
+		
+		System.out.println(a1);
+		System.out.println(a1.get());
+	}
+}
+/*
+ * Here in this program we have created a Class name A inside this class a constructor is there and then one method is there which is returning an integer value. Inside constructor we are 
+ * passing and int value as an argument. So while we are creating object of this class then JVM will not create a default constructor it will use this argumented constructor due to that user 
+ * already created one argumented Constructor. So JVM will use this constructor during object creation. While creating object it will ask for pass int value inside constructor. So user enter 
+ * value as 10 inside this. Inside argumented constructor user declared one line where its mentioned that to initialize class level variable which is declared as int type i.e i. So whatever value
+ * user will pass inside constructor during object creation that time it will just initialized the class level variable. If we want to print the value of class A object then we will get the value inside 
+ * this object. But it will not call get() method created by user inside class A. Here this get() method is created by user which is return one int value that is i value. Here this program will give 
+ * the output as class with package name with @ and some hexadecimal number. It will not shows the value inside this object. Here  below is the output of this program.
+ *  
+ *  com.lara.StringNotes.A@3d0bbf6d
+ *  
+ *  Here if we will call this user created method i.e get() method by object reference of class A then we can get the value of i. Because here using this method we are returning values of i. Here 
+ *  is the output of this Program by calling get() method.
+ *  
+ *  com.lara.StringNotes.A@3d0bbf6d
+ *  10
+ *  
+ *  Here in this program we are just assigning values to i not even modify this attribute. Because user already defined this attribute as private. So for this reason we are just assign value to it not
+ *  even modify. 
+ *  
+ *  Best way to assigning values to attributes using help of constructor and keep attributes as private specifiers. Then its a safest way to protect your data from outside users.
+ *  
+ */
+ 
+ Examples:
+ 
+ package com.lara.StringNotes;
+
+class B
+{
+	private int i;
+	private double d;
+	
+	B(int i, double d)
+	{
+		this.i = i;
+		this.d = d;
+	}
+	
+	int getI()
+	{
+		return i;
+	}
+	
+	double getd()
+	{
+		return d;
+	}
+	
+	public String toString()
+	{
+		return "i : "+i+"d :  "+d;
+	}
+}
+
+public class Notes27
+{
+	public static void main(String[] args)
+	{
+		B b = new B(10, 10.10);
+		
+		System.out.println(b);
+	}
+}
+/*
+ * Here in this Program we have created a class name B where we have declared two variables one is int type and another is double type. All these variables are declared as private access 
+ * specifier. But here we are here assigning values to these attributes using the help of class B Constructor. and retrieving values using separate methods for each attributes. Means we have 
+ * created method for each attributes. similarly if user wants to see both values using object reference then also he can able to access due to we have override toString() method inside this
+ * class and also implemented inside this toString() method, where we are retrieving values of both attributes. In previous program we have not override toString() method inside that class 
+ * for that reason we are unable to see value inside that class object reference. 
+ * Here is the output of this program.
+ * 
+ *  i : 10d :  10.1
+ */
+ 
+ 
+Examples:
+
